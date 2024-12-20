@@ -311,6 +311,17 @@ public class Main {
                     break;
                 }
                 case 5:
+                    System.out.println("Введите номер функции:");
+                    System.out.println("1. Вывести список товаров, отсортированных по алфавиту.");
+                    System.out.println("2. Вывести список товаров отсортированных по возрастанию цены.");
+                    System.out.println("3. Вывести список товаров отсортированных по убыванию цены.");
+                    System.out.println("4. Вывести список заказов отсортированных по возрастанию цены.");
+                    System.out.println("5. Вывести список заказов отсортированных по убыванию цены.");
+                    System.out.println("6. Поиск товаров.");
+                    System.out.println("7. Проверка существует ли категория товаров.");
+                    System.out.print("Ваш выбор: ");
+                    int choicesearch = scanner.nextInt();
+                    scanner.nextLine();  // Удаляем символ новой строки из буфера
 
                 case 0: {
                     System.out.println("Выход...");

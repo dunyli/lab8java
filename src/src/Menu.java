@@ -25,6 +25,7 @@ public class Menu {
         System.out.println("2. Добавить категорию");
         System.out.println("3. Добавить поставщика");
         System.out.println("4. Добавить товар");
+        System.out.println("5. Поиск и сортировка информации.");
         System.out.println("0. Выход");
         System.out.print("Выберите действие: ");
     }
