@@ -1,38 +1,47 @@
 package src;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Storehouse {
-    private Product[] products;
+    private List<Product> products;
     private int num_products;
 
     //Конструктор класса Storehouse
     public Storehouse() {
+        products = new ArrayList<>(); // Инициализация списка продуктов
         num_products = 0;
     }
 
-    //Добавление класса Product в класс Storehouse
+    // Добавление класса Product в класс Storehouse
     public void addProduct(Product product) {
-        Product[] newProducts = new Product[num_products + 1];
-        for (int i = 0; i < num_products; i++) {
-            newProducts[i] = products[i];
-        }
-        newProducts[num_products] = product;
-        products = newProducts;
+        products.add(product); // Используем метод add для добавления продукта в список
         num_products++;
     }
 
-    public void editProduct(int product_id, String name, int price, int volume, int category_id, int supplier_id) {
-        products[product_id].set(name, price, volume, category_id, supplier_id);
+    // Получение продукта по индексу
+    public Product listProducts(int index) {
+        if (index >= 0 && index < products.size()) {
+            return products.get(index);
+        }
+        return null; // Возвращаем null, если индекс вне диапазона
     }
 
-    public Product listProducts(int count) {
-        for (int i = 0; i < num_products; i++) {
-            if (i == count) return products[i];
+    // Редактирование продукта по ID
+    public void editProduct(int productId, String name, int price, int volume, int categoryId, int supplierId) {
+        if (productId >= 0 && productId < products.size()) {
+            products.get(productId).set(name, price, volume, categoryId, supplierId);
+        } else {
+            System.out.println("Продукт с таким ID не найден.");
         }
-        return null;
     }
 
     //Вывод данных класса
     public int getNum_products() {
         return num_products;
+    }
+
+    // Получение списка продуктов
+    public List<Product> getProducts() {
+        return new ArrayList<>(products); // Возвращаем копию списка продуктов
     }
 }

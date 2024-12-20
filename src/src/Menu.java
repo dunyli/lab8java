@@ -15,6 +15,7 @@ public class Menu {
         System.out.println("2. Вывод данных");
         System.out.println("3. Создание заказа");
         System.out.println("4. Выбор услуги");
+        System.out.println("5. Поиск и сортировка информации.");
         System.out.println("0. Выход");
         System.out.print("Выберите действие: ");
     }
@@ -25,9 +26,25 @@ public class Menu {
         System.out.println("2. Добавить категорию");
         System.out.println("3. Добавить поставщика");
         System.out.println("4. Добавить товар");
-        System.out.println("5. Поиск и сортировка информации.");
         System.out.println("0. Выход");
         System.out.print("Выберите действие: ");
+    }
+
+    public void displayOrderHistory(Order order, int orderIndex) {
+        int clientId = order.getClient_id();
+        int numProducts = order.getNum_products();
+        int totalPrice = order.getTotal_price();
+        System.out.printf("Заказ №%d. ", orderIndex + 1);
+        System.out.printf("ID клиента: %d  ", clientId);
+        for (int a = 0; a < numProducts; a++) {
+            System.out.print("Товары: ");
+            System.out.printf("%d. ", a + 1);
+            Product product = order.listProducts(a);
+            System.out.println("Название продукта: " + product.getName());
+            System.out.printf("Цена: %d, Количество: %d\n", product.getPrice(), product.getCount());
+        }
+        System.out.printf("Общая стоимость: %d\n", totalPrice);
+        System.out.println();
     }
 
     // Функция для вывода данных

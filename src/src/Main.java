@@ -1,6 +1,7 @@
 package src;
 
-import java.util.Scanner;
+import java.util.*;
+
 public class Main {
     public static void main(String[] args){
         Store store = new Store();
@@ -49,7 +50,7 @@ public class Main {
         System.out.println("Обновленный Tester: ");
         newTester.performManage();
 
-        menu.login();
+        //menu.login();
         do {
             menu.outMenu();
             choice1 = scanner.nextInt();
@@ -193,23 +194,8 @@ public class Main {
                         case 5: {
                             System.out.println("История заказов:");
                             for (int j = 0; j < orderhistory.getOrderCount(); j++) {
-                                System.out.print("ID заказа: " + (j + 1) + "  ");
-                                newOrder = orderhistory.listOrders(j);
-                                client_id = newOrder.getClient_id();
-                                num_products = newOrder.getNum_products();
-                                total_price = newOrder.getTotal_price();
-                                System.out.print(" ID клиента: " + client_id);
-                                for (int a = 0; a < num_products; a++) {
-                                    System.out.print(" Товары: ");
-                                    System.out.print((a + 1) + ". ");
-                                    Product newProduct = new Product();
-                                    newProduct = newOrder.listProducts(a);
-                                    name = newProduct.getName();
-                                    price = newProduct.getPrice();
-                                    count = newProduct.getCount();
-                                    System.out.println("Название продукта: " + name + ", Цена: " + price + ", Количество: " + count);
-                                }
-                                System.out.println("Общая стоимость: " + total_price);
+                                Order new_order = orderhistory.listOrders(j);
+                                menu.displayOrderHistory(new_order, j);
                             }
                             break;
                         }
@@ -221,9 +207,6 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    scanner.nextLine();
-                    num_products_order = 0;
-                    total_price = 0;
                     do {
                         System.out.print("Введите ID клиента (или 0 для выхода): ");
                         client_id = scanner.nextInt();
@@ -322,7 +305,17 @@ public class Main {
                     System.out.print("Ваш выбор: ");
                     int choicesearch = scanner.nextInt();
                     scanner.nextLine();  // Удаляем символ новой строки из буфера
+                    switch (choicesearch) {
+                        case 1: {
+                            List<Product> newStorehouse = storehouse.getProducts();
+                            Collections.sort(newStorehouse, Comparator.comparing(Product::getName));
+                            newStorehouse.forEach(System.out::println);
+                            break;
+                        }
+                        case 2: {
 
+                        }
+                        }
                 case 0: {
                     System.out.println("Выход...");
                     break;
