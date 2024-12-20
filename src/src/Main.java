@@ -359,6 +359,21 @@ public class Main {
                             result.forEach(System.out::println);
                             break;
                         }
+                        case 7: {
+                            System.out.print("Введите название категории, которую нужно проверить: ");
+                            String nameCategory = scanner.nextLine();
+                            List<Category> newCategories = store.getCategories();
+                            boolean categoryExists = newCategories.stream().anyMatch(category -> category.get().equals(nameCategory)); // Проверяем, существует ли категория
+                            if (!categoryExists) {
+                                System.out.println("Категория с данным именем не существует.");
+                            } else {
+                                System.out.println("Категория с данным именем уже существует.");
+                            }
+                            break;
+                        }
+                        default:
+                            System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
+                            break;
                     }
                 case 0: {
                     System.out.println("Выход...");
