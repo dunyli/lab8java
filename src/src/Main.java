@@ -346,6 +346,19 @@ public class Main {
                             }
                             break;
                         }
+                        case 6: {
+                            System.out.print("Введите название товара, который нужно найти: ");
+                            String nameProduct = scanner.nextLine();
+                            List<Product> newStorehouse = storehouse.getProducts();
+                            List<Product> result = new ArrayList<>();
+                            for (Product product : newStorehouse) {
+                                if (product.getName().equals(nameProduct)) {
+                                    result.add(product);
+                                }
+                            }
+                            result.forEach(System.out::println);
+                            break;
+                        }
                     }
                 case 0: {
                     System.out.println("Выход...");
