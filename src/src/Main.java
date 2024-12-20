@@ -124,7 +124,7 @@ public class Main {
                                     Product newProduct = new Product();
                                     newProduct.set(name, price, count, category_id, supplier_id);
                                     storehouse.addProduct(newProduct);
-                                    System.out.print("Товар добавлен! ");
+                                    System.out.println("Товар добавлен! ");
                                 }
                             }
                             break;
@@ -313,8 +313,12 @@ public class Main {
                             break;
                         }
                         case 2: {
-
+                            List<Product> newStorehouse = storehouse.getProducts();
+                            Collections.sort(newStorehouse, Comparator.comparingInt(Product::getPrice));
+                            newStorehouse.forEach(System.out::println);
+                            break;
                         }
+
                         }
                 case 0: {
                     System.out.println("Выход...");

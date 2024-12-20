@@ -42,4 +42,11 @@ public class Product {
     public int getSupplier_id() {
         return supplier_id;
     }
+
+    // Метод toString для вывода информации о продукте
+    @Override
+    public String toString() {
+        return String.format("Название: %s, Цена: %d, Количество: %d, Категория ID: %d, Поставщик ID: %d",
+                name, price, count, category_id, supplier_id);
+    }
 }
