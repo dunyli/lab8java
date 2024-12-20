@@ -1,32 +1,34 @@
 package src;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderHistory {
-    private Order[] orders;
+    private List<Order> orders;
     private int orderCount;
 
     //Конструктор класса OrderHistory
     public OrderHistory() {
+        orders = new ArrayList<>(); // Инициализация списка заказов
         orderCount = 0;
     }
     //Добавление класса Order в класс OrderHistory
     public void addOrder(Order order) {
-        Order[] newOrders = new Order[orderCount + 1];
-        for (int i = 0; i < orderCount; i++) {
-            newOrders[i] = orders[i];
-        }
-        newOrders[orderCount] = order;
-        orders = newOrders;
-        orderCount++;
+        orders.add(order); // Добавляем заказ в список
     }
 
-    public Order listOrders(int count) {
-        for (int i = 0; i < orderCount; i++) {
-            if (i == count) return orders[i];
+    public Order listOrders(int index) {
+        if (index >= 0 && index < orders.size()) {
+            return orders.get(index);
         }
-        return null;
+        return null; // Возвращаем null, если индекс вне диапазона
     }
 
     public int getOrderCount() {
         return orderCount;
+    }
+
+    // Получение списка всех заказов
+    public List<Order> getOrders() {
+        return new ArrayList<>(orders); // Возвращаем копию списка заказов
     }
 }

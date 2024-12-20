@@ -324,6 +324,18 @@ public class Main {
                             newStorehouse.forEach(System.out::println);
                             break;
                         }
+                        case 4: {
+                            List<Order> newOrderHistory = orderhistory.getOrders();
+                            // Сортируем заказы по общей стоимости
+                            Collections.sort(newOrderHistory, Comparator.comparingInt(Order::getTotal_price));
+                            // Выводим информацию о каждом заказе
+                            for (int i = 0; i < newOrderHistory.size(); i++) {
+                                Order order = newOrderHistory.get(i);
+                                menu.displayOrderHistory(order, i); // Вызов функции для отображения информации о заказе
+                            }
+                            break;
+                        }
+
                         }
                 case 0: {
                     System.out.println("Выход...");
