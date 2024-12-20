@@ -318,7 +318,12 @@ public class Main {
                             newStorehouse.forEach(System.out::println);
                             break;
                         }
-
+                        case 3: {
+                            List<Product> newStorehouse = storehouse.getProducts();
+                            Collections.sort(newStorehouse, Comparator.comparingInt(Product::getPrice).reversed());
+                            newStorehouse.forEach(System.out::println);
+                            break;
+                        }
                         }
                 case 0: {
                     System.out.println("Выход...");
